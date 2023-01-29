@@ -8,9 +8,9 @@ import 'package:news_app/models/sources_response.dart';
 import '../../constant/constant.dart';
 class ApiManager{
 
-  static Future<SourcesResopnse> getSources() async {
+  static Future<SourcesResopnse> getSources(String category) async {
     var URL =Uri.https(base,'/v2/top-headlines/sources',{
-      'apiKey':apiKey,
+      'apiKey':apiKey,'category':category
     });
     Response sources=await http.get(URL);
     var json =jsonDecode(sources.body);
