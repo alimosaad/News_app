@@ -3,6 +3,9 @@ import 'package:news_app/screens/category/category_data.dart';
 import 'package:news_app/screens/category/categry_item.dart';
 
 class CategoryScreen extends StatelessWidget {
+ Function onCategorySelect;
+
+ CategoryScreen(this.onCategorySelect);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,11 @@ class CategoryScreen extends StatelessWidget {
               mainAxisSpacing: 12,
               crossAxisSpacing: 12
             ), itemBuilder: (context,index){
-              return CategoryItem(categories[index], index);
+              return InkWell(
+                onTap: (){
+                  onCategorySelect(categories[index]);
+                },
+                  child: CategoryItem(categories[index], index));
             }),
           )
         ],
