@@ -17,10 +17,11 @@ class ApiManager{
     SourcesResopnse sourcesResopnse=SourcesResopnse.fromJson(json);
     return sourcesResopnse;
   }
-  static Future<NewsDataModel> getNewsData(String sourceId) async {
+  static Future<NewsDataModel> getNewsData({String? sourceId,String? query}) async {
     Uri URL=Uri.https(base,'/v2/everything',{
       'apiKey':apiKey,
       'sources':sourceId,
+      'q':query
     });
     Response response=await http.get(URL);
     var json =jsonDecode(response.body);
